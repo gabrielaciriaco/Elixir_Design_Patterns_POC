@@ -10,13 +10,14 @@ defmodule BookSearchProxy do
   }
 
   def getBook(isbn) do
+    # nesse caso estou simulando uma pesquisa com base em um cache estático
     case Map.get(@cached_books, isbn) do
       nil ->
         # adicionar book no cache com função (vamos criar?)
         IO.puts("Livro nao encontrado no cache")
 
       _ ->
-        IO.puts("Livro  encontrado no cache")
+        IO.puts("Livro encontrado no cache")
     end
   end
 end

@@ -1,6 +1,6 @@
 defmodule ChannelFactory do
   def create do
-    "ex1"
+    "simulando criação"
   end
 
   def f() do
