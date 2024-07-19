@@ -19,3 +19,31 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/elixir_design_patterns>.
 
+## Teste - factory.ex
+
+- mudar para o diretório lib (cd lib)
+- executar "iex factory.ex""
+- dentro do iex executar:
+  - ChannelFactory.f()
+  - ChannelFactory.g()
+  - você pode testar também a chamada do create direto: ChannelFactory.create()
+
+## Teste - adapter.ex
+
+- mudar para o diretório lib (cd lib)
+- executar "iex adapter.ex""
+- dentro do iex executar:
+  - proj_samsung = ProjetorSamsung.new("12345")
+  - proj_lg = ProjetorLG.new("12345")
+  - adapter_samsung = AdaptadorProjetorSamsung.new(proj_samsung)
+  - adapter_lg = AdaptadorProjetorLG.new(proj_lg)
+  - SistemaControleProjetores.init(adapter_samsung) #teste projetor samsung
+  - SistemaControleProjetores.init(adapter_lg) #teste projetor lg
+
+## Teste - proxy.ex
+
+- mudar para o diretório lib (cd lib)
+- executar "iex proxy.ex""
+- dentro do iex executar:
+  - BookSearchProxy.getBook("123456789") #para o caso que tem o objeto no chache
+  - BookSearchProxy.getBook("2") #outro exemplo implementado

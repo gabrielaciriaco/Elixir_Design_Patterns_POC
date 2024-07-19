@@ -27,8 +27,20 @@ defmodule ElixirDesignPatterns.MixProject do
   end
 
   def run do
-    IO.puts(ChannelFactory.f())
-    BookSearchProxy.getBook("123456789")
-    BookSearchProxy.getBook("987654321")
+    # # factory
+    # IO.puts(ChannelFactory.f())
+    # IO.puts(ChannelFactory.g())
+    # IO.puts(ChannelFactory.h())
+
+    # # proxy
+    # BookSearchProxy.getBook("123456789")
+    # BookSearchProxy.getBook("987654321")
+
+    # # adapter
+    # projetor_samsung = %ProjetorSamsung{serial_number: "12345"}
+    # projetor_lg = %ProjetorLG{serial_number: "123456"}
+
+    # SistemaControleProjetores.init(AdaptadorProjetorSamsung)
+    # SistemaControleProjetores.init(AdaptadorProjetorLG)
   end
 end
