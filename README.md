@@ -31,7 +31,7 @@ be found at <https://hexdocs.pm/elixir_design_patterns>.
 ## Teste - adapter.ex
 
 - mudar para o diretório lib (cd lib)
-- executar "iex adapter.ex""
+- executar "iex adapter.ex"
 - dentro do iex executar:
   - proj_samsung = ProjetorSamsung.new("12345")
   - proj_lg = ProjetorLG.new("12345")
@@ -47,3 +47,13 @@ be found at <https://hexdocs.pm/elixir_design_patterns>.
 - dentro do iex executar:
   - BookSearchProxy.getBook("123456789") #para o caso que tem o objeto no chache
   - BookSearchProxy.getBook("2") #outro exemplo implementado
+
+## Teste - decorator.ex
+
+- mudar para o diretório lib (cd lib)
+- executar "iex decorator.ex""
+- dentro do iex executar:
+  - tcp_channel = %NewTCPChannel{}
+  - zip_channel = %ZipChannel{channel: tcp_channel}
+  - NewChannel.send(zip_channel, "Mensagem de teste")
+  - NewChannel.receive(zip_channel)
