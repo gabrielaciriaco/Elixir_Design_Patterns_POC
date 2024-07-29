@@ -23,50 +23,34 @@ defmodule ProjetorLG do
 end
 
 defprotocol Projetor do
-  @spec liga(t()) :: any()
   def liga(adaptador)
 end
 
-defimpl Projetor, for: AdaptadorProjetorSamsung do
-  def liga(adaptador), do: ProjetorSamsung.turnOn(adaptador.projetor)
-end
-
-defimpl Projetor, for: AdaptadorProjetorLG do
-  def liga(adaptador), do: ProjetorLG.enable(5, adaptador.projetor)
-end
-
 defmodule AdaptadorProjetorSamsung do
-  @behaviour Projetor
-
   defstruct projetor: nil
 
   def new(projetor) do
     %AdaptadorProjetorSamsung{projetor: projetor}
   end
 
-  @spec liga(any()) :: :ok
-  def liga(adaptador) do
-    ProjetorSamsung.turnOn(adaptador.projetor)
+  defimpl Projetor, for: AdaptadorProjetorSamsung do
+    def liga(adaptador), do: ProjetorSamsung.turnOn(adaptador.projetor)
   end
 end
 
 defmodule AdaptadorProjetorLG do
-  @behaviour Projetor
-
   defstruct projetor: nil
 
   def new(projetor) do
     %AdaptadorProjetorLG{projetor: projetor}
   end
 
-  @spec liga(any()) :: :ok
-  def liga(adaptador) do
-    ProjetorLG.enable(5, adaptador.projetor)
+  defimpl Projetor, for: AdaptadorProjetorLG do
+    def liga(adaptador), do: ProjetorLG.enable(5, adaptador.projetor)
   end
 end
 
 defmodule SistemaControleProjetores do
-  @spec init(any()) :: any()
   def init(adaptador) do
     Projetor.liga(adaptador)
   end

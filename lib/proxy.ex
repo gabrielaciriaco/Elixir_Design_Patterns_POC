@@ -6,21 +6,23 @@ defmodule Book do
   end
 end
 
-defprotocol BookSearchInterface do
-  def getBook(isbn)
+defmodule BookSearchInterface do
+  @callback getBook(String.t()) :: {:ok, any()}
 end
 
 defmodule BookSearch do
   @behaviour BookSearchInterface
+
+  @impl BookSearchInterface
   def getBook(isbn) do
     IO.puts("Pesquisando no objeto base - #{isbn}")
 
     case isbn do
       "2" ->
-        Book.new("GoF")
+        {:ok, Book.new("GoF")}
 
       _ ->
-        IO.puts("ISBN não corresponde ao padrão esperado")
+        {:ok, "ISBN não corresponde ao padrão esperado"}
     end
   end
 end
@@ -28,20 +30,25 @@ end
 defmodule BookSearchProxy do
   @behaviour BookSearchInterface
 
-  @cached_books %{
-    "123456789" => %{"ISBN" => "123456789", "title" => "Livro 1", "author" => "Autor 1"}
-  }
+  def cached_books do
+    %{
+      "123456789" => %{"ISBN" => "123456789", "title" => "Livro 1", "author" => "Autor 1"}
+    }
+  end
 
+  @impl BookSearchInterface
   def getBook(isbn) do
     # nesse caso estou simulando uma pesquisa com base em um cache estático
-    case Map.get(@cached_books, isbn) do
+    case Map.get(BookSearchProxy.cached_books(), isbn) do
       nil ->
         IO.puts("Livro nao encontrado no proxy, iniciando busca no objeto base")
-        BookSearch.getBook(isbn)
+        book = BookSearch.getBook(isbn)
+        book
 
-      # adicionar book no cache com função (vamos criar?)
+      # A ideia aqui é adicionar book no cache já que o proxy ja conhece ele
       _ ->
         IO.puts("Livro encontrado no proxy")
+        Map.get(BookSearchProxy.cached_books(), isbn)
     end
   end
 end

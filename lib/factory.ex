@@ -1,18 +1,16 @@
 defprotocol Channel do
-  def send()
+  def send(_)
 end
 
 defmodule TCPChannel do
-  @behaviour Channel
-  def send() do
-    # Envia mensagem
+  defimpl Channel, for: TCPChannel do
+    def send(_), do: "simulando TCP"
   end
 end
 
 defmodule UDPChannel do
-  @behaviour Channel
-  def send() do
-    # Envia mensagem
+  defimpl Channel, for: UDPChannel do
+    def send(_), do: "simulando UDP"
   end
 end
 
