@@ -57,3 +57,20 @@ be found at <https://hexdocs.pm/elixir_design_patterns>.
   - zip_channel = %ZipChannel{channel: tcp_channel}
   - NewChannel.send(zip_channel, "Mensagem de teste")
   - NewChannel.receive(zip_channel)
+
+## Teste - strategy.ex
+
+- mudar para o diretório lib (cd lib)
+- executar "iex strategy.ex""
+- dentro do iex executar:
+  - list = MyList.new([5, 2, 9, 1, 5, 6])
+  - sorted_list = MyList.sort(list)
+
+## Teste - singleton.ex
+
+- mudar para o diretório lib (cd lib)
+- executar "iex singleton.ex""
+- dentro do iex executar:
+  - {:ok, \_pid} = LoggerSingleton.start_link(nil)
+  - LoggerSingleton.println("Hello, Singleton Logger!")
+  - LoggerSingleton.get_instance()

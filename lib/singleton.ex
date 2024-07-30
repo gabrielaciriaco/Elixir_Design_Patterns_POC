@@ -1,30 +1,31 @@
-# defmodule LoggerSingleton do
-#   @instance nil
+defmodule LoggerSingleton do
+  use GenServer
 
-#   def get_instance() do
-#     case @instance do
-#       nil ->
-#         instance = new_logger()
-#         update_state(instance)
-#         @instance
+  def start_link(_) do
+    GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
+  end
 
-#       _ ->
-#         nil
-#     end
-#   end
+  def get_instance() do
+    GenServer.call(__MODULE__, :get_instance)
+  end
 
-#   defp new_logger() do
-#     self()
-#   end
+  def println(msg) do
+    GenServer.cast(__MODULE__, {:println, msg})
+  end
 
-#   def update_state(instance) do
-#     @instance = instance
-#   end
+  @impl true
+  def init(:ok) do
+    {:ok, %{}}
+  end
 
-#   def println(msg) do
-#     IO.puts(msg)
-#   end
-# end
+  @impl true
+  def handle_call(:get_instance, _from, state) do
+    {:reply, self(), state}
+  end
 
-# No caso desse padrão, como em Elixir não tem instancia de classe como eu vou utilizar
-# um singleton que visa centralizar uma unica instancia do objeto?
+  @impl true
+  def handle_cast({:println, msg}, state) do
+    IO.puts(msg)
+    {:noreply, state}
+  end
+end
