@@ -3,6 +3,7 @@ defprotocol Channel do
 end
 
 defmodule TCPChannel do
+  defstruct []
   defimpl Channel, for: TCPChannel do
     def send(_), do: "simulando TCP"
   end
@@ -15,15 +16,7 @@ defmodule UDPChannel do
 end
 
 defmodule ChannelFactory do
-  def create do
-    IO.puts("simulando criação do TCP channel")
-  end
-
-  def f() do
-    ChannelFactory.create()
-  end
-
-  def g() do
-    ChannelFactory.create()
+  def create() do
+    %TCPChannel{}
   end
 end

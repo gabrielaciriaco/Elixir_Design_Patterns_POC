@@ -24,9 +24,7 @@ be found at <https://hexdocs.pm/elixir_design_patterns>.
 - mudar para o diretório lib (cd lib)
 - executar "iex factory.ex""
 - dentro do iex executar:
-  - ChannelFactory.f()
-  - ChannelFactory.g()
-  - você pode testar também a chamada do create direto: ChannelFactory.create()
+  - ChannelFactory.create()
 
 ## Teste - adapter.ex
 
