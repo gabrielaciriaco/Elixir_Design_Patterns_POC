@@ -5,7 +5,7 @@ defmodule ProjetorSamsung do
     %ProjetorSamsung{serial_number: serial_number}
   end
 
-  def turnOn(projetor) do
+  def turn_on(projetor) do
     IO.puts("Ligando projetor da Samsung #{projetor.serial_number}")
   end
 end
@@ -34,7 +34,7 @@ defmodule AdaptadorProjetorSamsung do
   end
 
   defimpl Projetor, for: AdaptadorProjetorSamsung do
-    def liga(adaptador), do: ProjetorSamsung.turnOn(adaptador.projetor)
+    def liga(adaptador), do: ProjetorSamsung.turn_on(adaptador.projetor)
   end
 end
 
