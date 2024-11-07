@@ -1,15 +1,17 @@
 defmodule LoggerSingleton do
   use GenServer
 
-  def start_link(_) do
+  defp start_link() do
     GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
   def get_instance() do
+    start_link()
     GenServer.call(__MODULE__, :get_instance)
   end
 
   def println(msg) do
+    get_instance()
     GenServer.cast(__MODULE__, {:println, msg})
   end
 
