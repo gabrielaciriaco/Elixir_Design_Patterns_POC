@@ -85,3 +85,11 @@ be found at <https://hexdocs.pm/elixir_design_patterns>.
   - Temperatura.add_observer(observer1)
   - Temperatura.set_temp(25)
   - Temperatura.set_temp(30)
+
+## Teste - template_method.ex
+
+- mudar para o diretório lib (cd lib)
+- executar "iex template_method.ex" (no windows iex.bat template_method.ex)
+- dentro do iex executar:
+  - funcionario = FuncionarioCLT.criar_funcionario(1000.0)
+  - salario_liquido = Funcionario.calc_salario_liquido(funcionario)
