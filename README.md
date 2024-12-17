@@ -93,3 +93,18 @@ be found at <https://hexdocs.pm/elixir_design_patterns>.
 - dentro do iex executar:
   - funcionario = FuncionarioCLT.criar_funcionario(1000.0)
   - salario_liquido = Funcionario.calc_salario_liquido(funcionario)
+
+## Teste - visitor.ex
+
+- mudar para o diretório lib (cd lib)
+- executar "iex visitor.ex" (no windows iex.bat visitor.ex)
+- dentro do iex executar:
+  - veiculos = [
+      %Carro{placa: "GHJ-1020"},
+      %Onibus{placa: "BNM-3456"},
+      %Carro{placa: "IOP-1234"},
+      %Onibus{placa: "BVC-7923"}
+    ]
+  - Enum.each(veiculos, fn veiculo -> 
+      Veiculo.Visitor.visit(veiculo)
+    end)
