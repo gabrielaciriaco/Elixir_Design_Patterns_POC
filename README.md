@@ -72,3 +72,16 @@ be found at <https://hexdocs.pm/elixir_design_patterns>.
   - {:ok, \_pid} = LoggerSingleton.start_link(nil)
   - LoggerSingleton.println("Hello, Singleton Logger!")
   - LoggerSingleton.get_instance()
+
+## Teste - observer.ex
+
+- mudar para o diretório lib (cd lib)
+- executar "iex observer.ex" (no windows iex.bat observer.ex)
+- dentro do iex executar:
+  - observer1 = fn new_temp ->
+      IO.puts("Temperatura alterada para: #{new_temp}°C")
+    end
+  - {:ok, _pid} = Temperatura.start_link(22)
+  - Temperatura.add_observer(observer1)
+  - Temperatura.set_temp(25)
+  - Temperatura.set_temp(30)
