@@ -37,7 +37,6 @@ defmodule Temperatura do
 end
 
 defmodule TermometroObserver do
-  # Função chamada quando uma mudança de temperatura for notificada
   def handle_event({:temperature_changed, new_temp}, state) do
     IO.puts("A temperatura foi alterada para: #{new_temp}°C")
     {:ok, state}
