@@ -1,33 +1,28 @@
-defmodule SortStrategy do
-  @callback sort(list()) :: {:ok,any()}
-end
 
-defmodule BubbleSortStrategy do
-  @behaviour SortStrategy
+defmodule SortStrategys do
 
-  @impl SortStrategy
-  def sort(elements) do
-    IO.puts("Simula ordenação do método bolha")
+  def quick_sort(elements) do
+    IO.puts("Simula ordenação do método quicksort")
   end
+
+  def bubble_sort(elements) do
+    IO.puts("Simula ordenação do método quicksort")
+  end
+
 end
 
 defmodule MyList do
-  defstruct elements: [], strategy: BubbleSortStrategy
+  defstruct elements: [], strategy: &SortStrategys.bubble_sort/1
 
   def new(elements) do
     %MyList{elements: elements}
   end
 
-  def set_sort_strategy(%MyList{} = my_list,strategy_atom) do
-    case strategy_atom do
-      :bubble_sort -> %{my_list | strategy: BubbleSortStrategy}
-
-      _ -> %{my_list | strategy: BubbleSortStrategy}   # Default
-    end
-
+  def set_sort_strategy(%MyList{} = my_list,strategy_fun) when is_function(strategy_fun, 1) do
+    %{my_list | strategy: strategy_fun}
   end
 
-  def sort(%MyList{elements: elements, strategy: strategy_module}) do
-    strategy_module.sort(elements)
+  def sort(%MyList{elements: elements, strategy: strategy_fun}) do
+    strategy_fun.(elements)
   end
 end
