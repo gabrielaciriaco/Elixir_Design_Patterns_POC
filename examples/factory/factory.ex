@@ -10,13 +10,14 @@ defmodule TCPChannel do
 end
 
 defmodule UDPChannel do
+  defstruct []
   defimpl Channel, for: UDPChannel do
     def send(_), do: "simulando UDP"
   end
 end
 
-defmodule ChannelFactory do
-  def create() do
-    %TCPChannel{}
+defmodule ChannelUser do
+  def send_message(channel) do
+    Channel.send(channel)
   end
 end
