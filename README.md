@@ -1,74 +1,25 @@
-# ElixirDesignPatterns
+# Implementação de Padrões de Projeto em Elixir
 
-**TODO: Add description**
+UFMG - Mongrafia em Sistemas de Informação
 
-## Installation
+## Contexto
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `elixir_design_patterns` to your list of dependencies in `mix.exs`:
+O paradigma de programação funcional tem se destacado como uma abordagem eficaz para o desenvolvimento de sistemas complexos, graças a propriedades como **imutabilidade**, **funções puras** e uma **gestão eficiente da concorrência**.
 
-```elixir
-def deps do
-  [
-    {:elixir_design_patterns, "~> 0.1.0"}
-  ]
-end
-```
+No entanto, surge a necessidade de compreender como adaptar e aplicar conceitos e práticas comuns da engenharia de software que tradicionalmente foram desenvolvidos com foco no **paradigma orientado a objetos**. Essa lacuna evidencia o desafio de traduzir melhores práticas para o contexto de outros paradigmas de programação, como o funcional.
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/elixir_design_patterns>.
+Diante desse cenário, este repositório tem como objetivo apresentar implementações coesas de 10 padrões de projeto diferentes no contexto da programação funcional, utilizando a linguagem Elixir. Além de aplicar os conceitos do paradigma funcional, o repositório busca adaptar os padrões para que façam sentido nesse contexto e explicar detalhadamente o raciocínio por trás de cada implementação.
 
-## Teste - factory.ex
+## Introdução
 
-- mudar para o diretório lib (cd lib)
-- executar "iex factory.ex""
-- dentro do iex executar:
-  - ChannelFactory.create()
+Para compreender este projeto, é fundamental se atentar a alguns conceitos importantes, sendo o primeiro deles os **padrões de projeto**.
 
-## Teste - adapter.ex
+Os padrões de projeto têm suas origens no livro “A Pattern Language”, escrito pelo arquiteto civil Christopher Alexander. A proposta do livro era documentar diversos padrões utilizados na construção de cidades e edifícios, com o objetivo de oferecer soluções reutilizáveis e eficazes para problemas comuns nesse contexto.
 
-- mudar para o diretório lib (cd lib)
-- executar "iex adapter.ex"
-- dentro do iex executar:
-  - proj_samsung = ProjetorSamsung.new("12345")
-  - proj_lg = ProjetorLG.new("12345")
-  - adapter_samsung = AdaptadorProjetorSamsung.new(proj_samsung)
-  - adapter_lg = AdaptadorProjetorLG.new(proj_lg)
-  - SistemaControleProjetores.init(adapter_samsung) #teste projetor samsung
-  - SistemaControleProjetores.init(adapter_lg) #teste projetor lg
+Em 1995, Erich Gamma, Richard Helm, Ralph Johnson e John Vlissides adaptaram as ideias de Alexander para o universo do desenvolvimento de software. O resultado foi o livro “Design Patterns: Elements of Reusable Object-Oriented Software”, que apresentou um catálogo de soluções para problemas recorrentes no desenvolvimento de sistemas. Nesse contexto, os padrões de projeto foram definidos como:
 
-## Teste - proxy.ex
+> "Padrões de projeto descrevem objetos e classes que se relacionam para resolver um problema de projeto genérico em um contexto particular."
 
-- mudar para o diretório lib (cd lib)
-- executar "iex proxy.ex""
-- dentro do iex executar:
-  - BookSearchProxy.getBook("123456789") #para o caso que tem o objeto no chache
-  - BookSearchProxy.getBook("2") #outro exemplo implementado
+O livro [Engenharia de Software Moderna](https://engsoftmoderna.info/), foi utilizado como referência para o desenvolvimento do projeto e é possível encontrar uma explicação mais detalhada a respeito do conceito de padrões de projeto na [introdução do capítulo 6](https://engsoftmoderna.info/).
 
-## Teste - decorator.ex
-
-- mudar para o diretório lib (cd lib)
-- executar "iex decorator.ex""
-- dentro do iex executar:
-  - tcp_channel = %NewTCPChannel{}
-  - zip_channel = %ZipChannel{channel: tcp_channel}
-  - NewChannel.send(zip_channel, "Mensagem de teste")
-  - NewChannel.receive(zip_channel)
-
-## Teste - strategy.ex
-
-- mudar para o diretório lib (cd lib)
-- executar "iex strategy.ex""
-- dentro do iex executar:
-  - list = MyList.new([5, 2, 9, 1, 5, 6])
-  - sorted_list = MyList.sort(list)
-
-## Teste - singleton.ex
-
-- mudar para o diretório lib (cd lib)
-- executar "iex singleton.ex""
-- dentro do iex executar:
-  - {:ok, \_pid} = LoggerSingleton.start_link(nil)
-  - LoggerSingleton.println("Hello, Singleton Logger!")
-  - LoggerSingleton.get_instance()
+## Implementações 
