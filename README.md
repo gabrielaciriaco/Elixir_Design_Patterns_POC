@@ -195,8 +195,17 @@ Dessa forma, consigo 'visitar' tanto o módulo **Carro** quanto o módulo **Onib
 
 ![VisitorIMG2](https://github.com/user-attachments/assets/013f97b4-0c87-4545-8459-52417d5a60c6)
 
+### Template Method
 
+O padrão **Template Method** permite que o 'esqueleto' de um algoritmo seja definido por uma classe abstrata, enquanto suas subclasses podem sobrescrever etapas específicas, sem modificar a estrutura original da classe.
 
+Na implementação proposta, utilizamos esse conceito para personalizar os cálculos dos descontos no salário de um funcionário, dependendo do seu tipo de vínculo com a empresa. O módulo **Funcionario** serve como a “base”, e para customizar os comportamentos desejados, ele recebe como parâmetro as funções responsáveis pelos cálculos dos descontos. 
+
+![TemplateMethodIMG1](https://github.com/user-attachments/assets/0e37967a-276f-4abb-886b-79d5f5808059)
+
+Dessa forma, é possível alterar o cálculo do salário líquido conforme o tipo de funcionário. Como exemplo dessa utilização, o módulo **FuncionarioCLT** implementa as três funções de desconto que são passadas como parâmetro para o módulo **Funcionario**.
+
+![TemplateMethodIMG2](https://github.com/user-attachments/assets/32351bb8-1039-48e1-a31a-47bc8d7dbae3)
 
 
 
