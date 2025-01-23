@@ -132,6 +132,23 @@ A vantagem desse padrão é que ele promove a reutilização de código e a flex
 
 Portanto, o padrão **Decorator** permite que você adicione novas funcionalidades aos objetos de maneira dinâmica e escalável, preservando a integridade da implementação original e evitando a complexidade que surge com a criação de subclasses numerosas.
 
+### Strategy
+
+O padrão **Strategy**  parametriza os algoritmos usados por uma classe, permitindo que diferentes algoritmos sejam trocados de maneira flexível e dinâmica. Ele nos mostra como encapsular uma família de algoritmos e torná-los intercambiáveis. Essa abordagem promove a flexibilidade e a manutenção do código, uma vez que as mudanças nos algoritmos não afetam diretamente a lógica que os emprega
+
+Para exemplificar a implementação, foi utilizado o contexto de algoritmos de ordenação. O objetivo é permitir que o método de ordenação usado pelo sistema possa ser alterado sem que haja a necessidade de alterar o código que implementa a ordenação. 
+
+![StrategyIMG1](https://github.com/user-attachments/assets/7ed70b98-e91b-4193-a13d-c58330b72a5d)
+
+No paradigma orientado a objetos, esse comportamento seria obtido através do uso de interfaces comuns entre as diferentes classes dos métodos de ordenação. No entanto, no contexto funcional, o simples uso de um protocolo comum não se mostra tão eficiente para tornar o código flexível, por isso para replicar esse comportamento foi utilizada a estratégia de **higher-order functions**.
+
+A ideia é que o módulo **MyList** que é utilizado para criar e ordenar listas de dados, receba um parâmetro opcional que espera uma função anônima e define o método de ordenação a ser utilizado. Dessa forma, é possível alterar o método de ordenação utilizado passando a função correspondente a ordenação desejada por parâmetro na chamada do método sort.
+
+![StrategyIMG2](https://github.com/user-attachments/assets/e380c045-e986-4e5d-bf86-653ee5a6e267)
+
+Essa troca de algoritmos de ordenação pode ser feita de forma dinâmica, proporcionando flexibilidade ao sistema para adotar diferentes algoritmos sem alterar o código que depende da estratégia de ordenação.Dessa maneira, o padrão Strategy facilita a adaptação do sistema a novas necessidades ou otimizações, ao mesmo tempo que mantém o código organizado e facilmente extensível.
+
+
 
 
 
