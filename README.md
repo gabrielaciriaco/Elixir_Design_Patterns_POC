@@ -62,7 +62,32 @@ Mais detalhes da implementação:
 * **módulo GenServer:** para implementar o comportamento esperado, foi utilizado o módulo **GenServer**, que já é definido na linguagem Elixir e fornece uma abstração para criar e gerenciar processos. Dessa forma é possível construir servidores genéricos que possam gerenciar estado e lidar com mensagens de forma assíncrona. Para saber mais sobre esse módulo acesse: [link](https://hexdocs.pm/elixir/1.12/GenServer.html)
 * **módulo LoggerSingleton:** utiliza um GenServer para assegurar que apenas uma instância do logger esteja ativa. A ideia é centralizar todo o gerenciamento das operações de log, garantindo que todas as mensagens de log sejam processadas e armazenadas através de uma única “instância”.
 
-  
+### Proxy
 
+O padrão de projeto **Proxy** se baseia na inserção de um objeto para intermediar o acesso ao objeto real. A ideia é  servir como um intermediário que adiciona novas funcionalidades sem a necessidade de alterar a interface original do objeto. Funcionalidades como controle de acesso, registro de atividades, cache são comuns de serem adicionadas no objeto **Proxy**.
+
+A ideia é que os clientes não tenham mais referência ao objeto base, mas sim ao proxy que por sua vez terá referência ao objeto base.
+
+No caso da programação funcional, podemos utilizar o conceito de **Proxy** para gerenciar o acesso a um módulo ou até mesmo uma funcionalidade específica. Em Elixir não existe o conceito de classes e portanto não temos instâncias também, mas é possível replicar esse comportamento usando módulos e funções para criar uma camada de abstração entre o cliente e o módulo base.
+
+Mais detalhes a respeito da implementação proposta:
+
+* **módulo BookSearch:** módulo responsável por realizar a busca de livros.
+  
+![ProxyIMG1](https://github.com/user-attachments/assets/67ebb300-4574-417d-b641-4eaa651833ea)
+
+* **módulo BookSearchProxy:** atua como camada intermediária entre o cliente e o BookSearch. Esse proxy é utilizado para adicionar a  funcionalidade de cache no sistema de busca.
+
+![ProxyIMG2](https://github.com/user-attachments/assets/055d21e7-9a39-490e-8aef-4f48d3817b74)
+
+Dessa forma, o cliente solicita a busca de um livro através do módulo **BookSearchProxy** que vai verificar se o resultado da pesquisa já está armazenado no cache, caso ainda não esteja ele vai acessar o módulo base **BookSearch** para realizar a busca, retornar o resultado e armazená-lo em cache.
+
+![ProxyIMG3](https://github.com/user-attachments/assets/4e56900e-bfca-4e2c-bb6f-6ff4ed340c3d)
+
+Com essa implementação, o módulo base não será acionado diretamente pelo cliente e só será requisitado se de fato houver necessidade. O que nos permite oferecer uma solução eficiente para gerenciar o módulo base, mantendo a interface consistente para o cliente já que ele não precisa saber que o cache está em uso, ele simplesmente faz uma solicitação e recebe um resultado, independentemente de ele ter sido obtido do cache ou diretamente do módulo de busca.
+
+![Proxydiagrama](https://github.com/user-attachments/assets/247292e5-0903-49d9-9bc6-c8cf385718f6)
+
+Essa abordagem não só melhora o desempenho do sistema, ao reduzir a quantidade de buscas redundantes, mas também mantém a flexibilidade para adicionar outras funcionalidades no futuro. Por exemplo, podem ser incorporadas funcionalidades adicionais como controle de acesso ou registro de consultas sem modificar o módulo **BookSearch**. Assim, o padrão **Proxy** permite que o sistema seja mais modular e adaptável às mudanças.
 
 
