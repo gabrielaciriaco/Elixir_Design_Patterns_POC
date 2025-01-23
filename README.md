@@ -116,3 +116,27 @@ Mais detalhes da implementação:
 
 Essa abordagem é muito útil em cenários onde você precisa integrar componentes que foram desenvolvidos de forma independente ou que seguem padrões diferentes. O Adapter fornece uma solução elegante e flexível, permitindo que esses componentes coexistam e trabalhem juntos sem a necessidade de alterar seu código original.
 
+### Decorator
+
+O padrão **Decorator** é uma alternativa a herança para adicionar novos comportamentos a um objeto base de forma dinâmica e flexível. Ao invés de alterar o objeto base, o padrão Decorator usa de composição para estender suas funcionalidades. Na prática,isso significa que você pode adicionar novas responsabilidades aos objetos dinamicamente.
+
+Na implementação proposta, o padrão decorator é utilizado para adicionar funcionalidades a um Channel. O módulo **ChannelDecorator** funciona como um “decorador base”, que permite que novas funcionalidades sejam adicionadas a qualquer canal definido pelo protocolo **NewChannel** sem alterar sua implementação original. O protocolo **NewChannel** define a interface que todo canal deve implementar, para garantir que qualquer canal seja tratado de maneira consistente pelo sistema, independente das suas características específicas.
+
+![DecoratorIMG1](https://github.com/user-attachments/assets/440cc2f6-c86c-4460-861d-efd403970eb1)
+
+Suponha que você tenha um canal básico que implementa o protocolo **NewChannel**, utilizando o **ChannelDecorator** você pode criar um novo decorator que adiciona por exemplo monitoramento a aplicação. Esse decorator pode ser aplicado ao canal original, o que vai gerar uma nova funcionalidade para ele sem alterar sua implementação original.
+
+![DecoratorIMG2](https://github.com/user-attachments/assets/32e54127-6482-4ae2-923d-7735290f6e37)
+
+A vantagem desse padrão é que ele promove a reutilização de código e a flexibilidade. Em vez de criar subclasses para cada combinação de funcionalidades que você deseja, você pode criar pequenos decorators que adicionam comportamentos específicos e combiná-los conforme necessário. Isso mantém o sistema mais modular e facilita a manutenção e a extensão das funcionalidades.
+
+Portanto, o padrão **Decorator** permite que você adicione novas funcionalidades aos objetos de maneira dinâmica e escalável, preservando a integridade da implementação original e evitando a complexidade que surge com a criação de subclasses numerosas.
+
+
+
+
+
+
+
+
+
