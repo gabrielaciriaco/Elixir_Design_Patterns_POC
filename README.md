@@ -160,6 +160,31 @@ Dessa forma, o padrão **Facade** permite que o cliente interaja com o sistema d
 
 Na implementação proposta o foco foi em exemplificar o padrão facade, portanto não foi implementado o código para executar o programa X a partir de Elixir. Em resumo, o `InterpretadorX` exemplifica o padrão Facade ao simplificar a interação com um subsistema complexo, proporcionando uma interface mais amigável e fácil de utilizar. 
 
+### Observer
+
+**Observer** é um padrão de projeto que estabelece uma relação de dependência "um-para-muitos" entre objetos. Quando o estado de um objeto muda, todos os seus "observadores" são automaticamente notificados, permitindo uma comunicação eficiente e desacoplada.
+
+Na implementação apresentada, o módulo **Temperatura** atua como o "sujeito observado". Ele é responsável por gerenciar o estado da temperatura e manter uma lista de observadores registrados. Sempre que a temperatura é atualizada, todos os observadores são notificados de forma automática e assíncrona, refletindo as mudanças no estado do objeto observado.
+
+Essa abordagem garante que as atualizações no estado do módulo sejam propagadas para todos os interessados, sem que haja uma dependência direta entre o sujeito e os observadores, promovendo maior flexibilidade e modularidade no código.
+
+![ObserverIMG1](https://github.com/user-attachments/assets/70a60c7a-c352-47a9-b2ca-a7623ef07c58)
+
+O módulo **TermometroObserver** atua como o "observador" no padrão Observer. Sua responsabilidade é reagir às alterações realizadas no estado do módulo **Temperatura**. Sempre que a temperatura é atualizada, o **TermometroObserver** é notificado automaticamente. Nesse contexto, sua reação consiste em exibir uma mensagem na tela informando a temperatura atual, permitindo que o usuário acompanhe as mudanças de forma imediata.
+
+![ObserverIMG2](https://github.com/user-attachments/assets/e1fdc2be-e185-4b23-916e-1bf7b7f0b6d2)
+
+Basicamente, a cada alteração de temperatura realizada pelo método * *set_temp* *, a função * *notify_observers* * é chamada. Essa função percorre a lista de observadores registrados e notifica cada um deles sobre a mudança, garantindo que todos os observadores sejam notificados após alteração da temperatura. 
+
+![ObserverIMG3](https://github.com/user-attachments/assets/c3a85d9d-4cb2-4ed9-982e-0d674463fef3)
+
+Essa relação mostra o principal objetivo do padrão Observer, já que o observador permanece totalmente desacoplado do sujeito e ainda sim responde as suas notificações de mudança de estado de maneira independente. 
+
+
+
+
+
+
 
 
 
