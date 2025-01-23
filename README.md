@@ -90,4 +90,29 @@ Com essa implementação, o módulo base não será acionado diretamente pelo cl
 
 Essa abordagem não só melhora o desempenho do sistema, ao reduzir a quantidade de buscas redundantes, mas também mantém a flexibilidade para adicionar outras funcionalidades no futuro. Por exemplo, podem ser incorporadas funcionalidades adicionais como controle de acesso ou registro de consultas sem modificar o módulo **BookSearch**. Assim, o padrão **Proxy** permite que o sistema seja mais modular e adaptável às mudanças.
 
+### Adapter
+
+O padrão **Adapter** foi criado para auxiliar a resolução de problemas de compatibilidade entre objetos. A ideia é permitir que objetos com interfaces incompatíveis consigam se comunicar e trabalhar juntos. A camada de **Adapter** atua como um intermédio entre o cliente e a interface do objeto, convertendo a interface original para um formato que seja compatível com o cliente. Dessa forma é possível “adaptar” objetos existentes para que se encaixem em novos contextos ou sistemas sem a necessidade de alterar o código-fonte original deles.
+
+A implementação proposta simula a interação de projetores de marcas diferentes, que possuem interfaces distintas e incompatíveis entre si. Para resolver essa incompatibilidade, o código define um protocolo comum que o sistema pode usar para controlar qualquer tipo de projetor, independentemente da marca.
+
+Mais detalhes da implementação:
+
+* **módulo ProjetorSamsung e ProjetorLG:** descreve as operações realizadas com o projetor das respectivas marcas.
+  
+![AdapterIMG1](https://github.com/user-attachments/assets/0cebd57c-2074-4138-a2ea-b27b5185e880)
+
+* **protocolo Projetor:** atua como interface comum para os adapters que vão ser utilizados para utilizar o módulo dos projetores.
+
+![AdapterIMG2](https://github.com/user-attachments/assets/91001a7e-1fc0-4e15-b8d4-11741e0f7054)
+
+* **módulo AdaptadorProjetorSamsung e AdaptadorProjetorLG:** utiliza a interface Projetor para tornar os projetores compatíveis com o esperado pelo cliente que irá utilizar. Esse módulo implementa o protocolo Projetor, e chama internamente as operações específicas do módulo de cada projetor (como por ex para ligar, desligar etc)
+
+![AdapterIMG3](https://github.com/user-attachments/assets/7c0fa8d6-1192-4f2e-9a9a-13e029a5841e)
+
+* **módulo SistemaControleProjetores:** é o “cliente” da aplicação. É basicamente um módulo que chama a função para ligar um Projetor, através do protocolo **Projetor** que é usado como interface nos adaptadores implementados. Dessa forma, o padrão eu consigo trabalhar de forma uniforme com diferentes tipos de projetores, sem precisar se preocupar com as diferenças entre suas interfaces.
+  
+![AdapterIMG4](https://github.com/user-attachments/assets/8b577961-88c6-4942-8866-c553ff0d2f37)
+
+Essa abordagem é muito útil em cenários onde você precisa integrar componentes que foram desenvolvidos de forma independente ou que seguem padrões diferentes. O Adapter fornece uma solução elegante e flexível, permitindo que esses componentes coexistam e trabalhem juntos sem a necessidade de alterar seu código original.
 
