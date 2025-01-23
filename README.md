@@ -1,6 +1,6 @@
 # Implementação de Padrões de Projeto em Elixir
 
-UFMG - Mongrafia em Sistemas de Informação
+UFMG - Monografia em Sistemas de Informação
 
 ## Contexto
 
