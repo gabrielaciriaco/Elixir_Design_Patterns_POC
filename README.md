@@ -181,6 +181,19 @@ Basicamente, a cada alteração de temperatura realizada pelo método * *set_tem
 Essa relação mostra o principal objetivo do padrão Observer, já que o observador permanece totalmente desacoplado do sujeito e ainda sim responde as suas notificações de mudança de estado de maneira independente. 
 
 
+### Visitor
+
+O padrão **Visitor** permite separar algoritmos dos objetos sobre os quais eles operam. Seu principal objetivo é possibilitar a adição de novas operações a uma família de objetos sem alterar suas implementações. Essa abordagem assegura que a lógica de cada operação permaneça isolada das classes dos objetos, promovendo maior flexibilidade e modularidade no código.
+
+Na implementação proposta, esse conceito é aplicado em um sistema de gerenciamento de estacionamento. A ideia é realizar operações sobre os veículos que estão no estacionamento, independentemente do tipo de veículo. Assim, é possível executar ações específicas para cada tipo (como carros ou ônibus) sem modificar diretamente a estrutura das classes que os definem.
+
+Para alcançar essa flexibilidade, o protocolo definido no módulo **Veiculo** deve ser implementado em cada módulo que representa um tipo de veículo. Dessa forma, cada tipo de veículo pode fornecer sua própria lógica para a operação, garantindo um comportamento personalizado e compatível com o padrão Visitor.
+
+![VisitorIMG1](https://github.com/user-attachments/assets/b0b1625e-b753-4a18-8415-1b95ed33a76f)
+
+Dessa forma, consigo 'visitar' tanto o módulo **Carro** quanto o módulo **Onibus**, já que ambos implementam o protocolo definido no módulo **Veiculo**. Isso nos permite executar operações específicas para cada tipo de veículo, mantendo a flexibilidade e a modularidade do sistema, sem a necessidade de modificar diretamente as classes que os representam.
+
+![VisitorIMG2](https://github.com/user-attachments/assets/013f97b4-0c87-4545-8459-52417d5a60c6)
 
 
 
