@@ -148,6 +148,19 @@ A ideia é que o módulo **MyList** que é utilizado para criar e ordenar listas
 
 Essa troca de algoritmos de ordenação pode ser feita de forma dinâmica, proporcionando flexibilidade ao sistema para adotar diferentes algoritmos sem alterar o código que depende da estratégia de ordenação.Dessa maneira, o padrão Strategy facilita a adaptação do sistema a novas necessidades ou otimizações, ao mesmo tempo que mantém o código organizado e facilmente extensível.
 
+### Facade
+
+O padrão **Facade** fornece uma interface simplificada para um conjunto complexo de interfaces dentro de um sistema. A ideia é ocultar a complexidade interna de um subsistema e apresentar uma interface mais amigável e acessível para o usuário, facilitando a interação com o sistema.
+
+A implementação proposta utiliza o padrão para lidar com a execução de um tipo específico de programas, que são denominados “programas X”. O módulo **InterpretadorX** lida com a execução desse tipo de programas, sem que exista a necessidade de conhecer mais sobre a “linguagem X”. Mesmo que sejam complexas as operações por trás da interpretação desses programas, o cliente não precisará lidar com essa complexidade pois o **InterpretadorX** irá intermediar essa operação.
+
+![FacadeIMG1](https://github.com/user-attachments/assets/9793039f-8295-45f6-8a24-5e27e64cb9af)
+
+Dessa forma, o padrão **Facade** permite que o cliente interaja com o sistema de maneira mais eficiente e compreensível, sem precisar se preocupar com as complexidades internas do subsistema. Isso melhora a usabilidade e facilita a manutenção do código, já que qualquer alteração nas interfaces internas do subsistema pode ser gerenciada pelo Facade, sem impactar o código do cliente.
+
+Na implementação proposta o foco foi em exemplificar o padrão facade, portanto não foi implementado o código para executar o programa X a partir de Elixir. Em resumo, o `InterpretadorX` exemplifica o padrão Facade ao simplificar a interação com um subsistema complexo, proporcionando uma interface mais amigável e fácil de utilizar. 
+
+
 
 
 
