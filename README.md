@@ -49,3 +49,20 @@ A adaptação do padrão **Factory** para Elixir envolveu a utilização de prot
 
 Esse padrão é muito útil em contextos onde novos tipos de objetos podem ser adicionados ao longo do tempo, pois a lógica de criação é centralizada e pode ser modificada sem afetar o código que utiliza esses objetos. No caso do ChannelFactory, ele simplifica a criação e a gestão dos diferentes tipos de canais, permitindo que o sistema se adapte facilmente a novas necessidades ou mudanças nas implementações dos canais.
 
+### Singleton
+
+O padrão **Singleton** tem como objetivo garantir que uma classe tenha apenas uma única instância, proporcionando um ponto global de acesso a essa instância. 
+
+Para implementá-lo em linguagens orientadas a objetos, é necessário controlar o processo de criação de objetos e garantir que independentemente de quantas vezes uma solicitação para criar uma instância for feita, a **mesma instância** vai ser retornada.
+
+No contexto funcional de programação, como é o caso de Elixir, não existe o conceito de instância. Nesse caso, para implementar esse comportamento podemos utilizar de **processos leves** para realizar tarefas similares a instanciação, como é o caso do módulo [GenSever](https://hexdocs.pm/elixir/1.12/GenServer.html). Cada processo em Elixir é isolado e pode manter seu estado, o que permite simular o comportamento de um Singleton utilizando o sistema de processos da linguagem.
+
+Mais detalhes da implementação:
+
+* **módulo GenServer:** para implementar o comportamento esperado, foi utilizado o módulo **GenServer**, que já é definido na linguagem Elixir e fornece uma abstração para criar e gerenciar processos. Dessa forma é possível construir servidores genéricos que possam gerenciar estado e lidar com mensagens de forma assíncrona. Para saber mais sobre esse módulo acesse: [link](https://hexdocs.pm/elixir/1.12/GenServer.html)
+* **módulo LoggerSingleton:** utiliza um GenServer para assegurar que apenas uma instância do logger esteja ativa. A ideia é centralizar todo o gerenciamento das operações de log, garantindo que todas as mensagens de log sejam processadas e armazenadas através de uma única “instância”.
+
+  
+
+
+
