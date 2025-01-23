@@ -2,7 +2,7 @@
 
 Para testar o código implementado siga os seguintes passos:
 - mudar para o diretório correto: cd examples -> cd adapter
-- executar "iex factory.ex" (mac) ou "iex.bat observer.ex" (windows)
+- executar "iex adapter.ex" (mac) ou "iex.bat adapter.ex" (windows)
 - dentro do iex executar:
   - proj_samsung = ProjetorSamsung.new("12345")
   - proj_lg = ProjetorLG.new("12345")
